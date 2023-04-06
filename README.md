@@ -17,14 +17,11 @@ The entrypoint is `sqlite_web --no-browser -H 0.0.0.0` so please give additional
 docker run [ARGS]... ghcr.io/ebiiim/sqlite-web[:VERSION] [ARGS]... <DB_PATH>
 ```
 
-Alternatively, environment variable `SQLITE_DATABASE` can be used to specify the DB path.
-
 ```sh
 docker run --rm \
   -p 8080:8080 \
-  -e SQLITE_DATABASE=/database/app.db
-  -v /path/to/app.db:/database/app.db \
-  ghcr.io/ebiiim/sqlite-web
+  -v /path/to/app.db:/data/app.db \
+  ghcr.io/ebiiim/sqlite-web /data/app.db
 ```
 
 **Read-only mode**
@@ -34,10 +31,9 @@ Set `-r` or `--read-only`
 ```diff
   docker run --rm \
     -p 8080:8080 \
-    -e SQLITE_DATABASE=/database/app.db
-    -v /path/to/app.db:/database/app.db \
--   ghcr.io/ebiiim/sqlite-web
-+   ghcr.io/ebiiim/sqlite-web --read-only
+    -v /path/to/app.db:/data/app.db \
+-   ghcr.io/ebiiim/sqlite-web /data/app.db
++   ghcr.io/ebiiim/sqlite-web --read-only /data/app.db
 ```
 
 **Password authentication**
@@ -48,10 +44,9 @@ Set `-P` or `--password` and store the password to `SQLITE_WEB_PASSWORD`.
   docker run --rm \
     -p 8080:8080 \
 +   -e SQLITE_WEB_PASSWORD=hogehoge \
-    -e SQLITE_DATABASE=/database/app.db
     -v /path/to/app.db:/database/app.db \
--   ghcr.io/ebiiim/sqlite-web
-+   ghcr.io/ebiiim/sqlite-web --password
+-   ghcr.io/ebiiim/sqlite-web /data/app.db
++   ghcr.io/ebiiim/sqlite-web --password /data/app.db
 ```
 
 ## Changelog
