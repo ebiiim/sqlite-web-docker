@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> Now the original [coleifer/sqlite-web](https://github.com/coleifer/sqlite-web) has its own official Docker image.
+> So it's time to archive this repository.
+
 # sqlite-web-docker
 
 [![GitHub](https://img.shields.io/github/license/ebiiim/sqlite-web-docker)](https://github.com/ebiiim/sqlite-web-docker/blob/main/LICENSE)
